@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HappyTail Shop</title>
+
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" th:href="@{/styles/styles.css}">
+    <link rel="stylesheet" th:href="@{/styles/register.css}">
+</head>
+<body>
+<header class="navbar">
+    <div class="logo">
+        <a th:href="@{/main}">
+            <img th:src="@{/img/logo.png}" alt="HappyTail Logo">
+        </a>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Поиск...">
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+
+    <nav class="nav-links">
+        <a th:href="@{/shop}">Дүкен</a>
+        <a th:href="@{/medic}">Ветеринарлық дәріхана</a>
+        <a th:href="@{/sale}">Акциялар</a>
+    </nav>
+
+    <div class="auth-buttons">
+        <button class="register" onclick="openRegistrationModal()">Тіркелу</button>
+        <button class="login" onclick="openLoginModal()">Авторизация</button>
+    </div>
+</header>
+
+<!-- Модальное окно -->
+<div id="modal-container"></div>
+
+<section>
+    <h2 style="
+    margin-left: 270px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    ">Еда</h2>
+    <div class="grid food">
+        <a href="/shop/holistics" class="card orange">
+            <img th:src="@{/img/shop_img/holistic.png}" alt="Холистики">
+            <span>Холистики</span>
+        </a>
+        <a href="/shop/dry-food" class="card orange wide">
+            <img th:src="@{/img/shop_img/dry.png}" alt="Сухой корм">
+            <span>Сухой корм</span>
+        </a>
+        <a href="/shop/canned" class="card orange wide">
+            <img th:src="@{/img/shop_img/canned.png}" alt="Консервы, паучи">
+            <span>Консервы, паучи</span>
+        </a>
+        <a href="/shop/vet-food" class="card orange">
+            <img th:src="@{/img/shop_img/vet.png}" alt="Вет. корма">
+            <span>Вет. корма</span>
+        </a>
+        <a href="/shop/snacks" class="card orange">
+            <img th:src="@{/img/shop_img/treats.png}" alt="Лакомства">
+            <span>Лакомства</span>
+        </a>
+        <a href="/shop/healthy" class="card orange wide">
+            <img th:src="@{/img/shop_img/healthy.png}" alt="Здоровое питание">
+            <span>Здоровое питание</span>
+        </a>
+    </div>
+</section>
+
+
+<!-- Гигиена и уход -->
+<section>
+    <h2 style="
+    margin-left: 270px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    ">Гигиена и уход</h2>
+    <div class="grid hygiene">
+        <a href="/care/diapers" class="card blue">
+            <img th:src="@{/img/shop_img/hyg1.png}" alt="Пелёнки, подгузники">
+            <span>Пелёнки, подгузники</span>
+        </a>
+        <a href="/care/stains" class="card blue">
+            <img th:src="@{/img/shop_img/hyg2.png}" alt="От пятен и запахов">
+            <span>От пятен и запахов</span>
+        </a>
+        <a href="/care/eyes-ears" class="card blue">
+            <img th:src="@{/img/shop_img/hyg3.png}" alt="Для глаз и ушей">
+            <span>Для глаз и ушей</span>
+        </a>
+        <a href="/care/bags" class="card blue">
+            <img th:src="@{/img/shop_img/hyg4.png}" alt="Гигиенические пакеты">
+            <span>Гигиенические пакеты</span>
+        </a>
+        <a href="/care/toilet" class="card blue wide">
+            <img th:src="@{/img/shop_img/hyg5.png}" alt="Туалет и средства приучения">
+            <span>Туалет и средства приучения</span>
+        </a>
+        <a href="/care/paws" class="card blue">
+            <img th:src="@{/img/shop_img/hyg6.png}" alt="Уход за лапами">
+            <span>Уход за лапами</span>
+        </a>
+        <a href="/care/teeth" class="card blue">
+            <img th:src="@{/img/shop_img/hyg7.png}" alt="Чистка зубов">
+            <span>Чистка зубов</span>
+        </a>
+        <a href="/care/skin" class="card blue">
+            <img th:src="@{/img/shop_img/hyg8.png}" alt="Уход за кожей и шерстью">
+            <span>Уход за кожей и шерстью</span>
+        </a>
+        <a href="/care/conditioners" class="card blue wide">
+            <img th:src="@{/img/shop_img/hyg9.png}" alt="Кондиционеры">
+            <span>Кондиционеры</span>
+        </a>
+        <a href="/care/shampoo" class="card blue">
+            <img th:src="@{/img/shop_img/hyg10.png}" alt="Шампуни и мыло">
+            <span>Шампуни и мыло</span>
+        </a>
+    </div>
+</section>
+
+<section>
+    <h2 style="
+    margin-left: 270px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+    ">Гигиена и уход</h2>
+    <div class="grid hygiene">
+        <a href="/care/diapers" class="card green wide">
+            <img th:src="@{/img/shop_img/hyg1.png}" alt="Пелёнки, подгузники">
+            <span>Пелёнки, подгузники</span>
+        </a>
+        <a href="/care/stains" class="card green">
+            <img th:src="@{/img/shop_img/hyg2.png}" alt="От пятен и запахов">
+            <span>От пятен и запахов</span>
+        </a>
+        <a href="/care/eyes-ears" class="card green">
+            <img th:src="@{/img/shop_img/hyg3.png}" alt="Для глаз и ушей">
+            <span>Для глаз и ушей</span>
+        </a>
+        <a href="/care/bags" class="card green wide">
+            <img th:src="@{/img/shop_img/hyg4.png}" alt="Гигиенические пакеты">
+            <span>Гигиенические пакеты</span>
+        </a>
+        <a href="/care/toilet" class="card green wide">
+            <img th:src="@{/img/shop_img/hyg5.png}" alt="Туалет и средства приучения">
+            <span>Туалет и средства приучения</span>
+        </a>
+        <a href="/care/paws" class="card green">
+            <img th:src="@{/img/shop_img/hyg6.png}" alt="Уход за лапами">
+            <span>Уход за лапами</span>
+        </a>
+        <a href="/care/teeth" class="card green ">
+            <img th:src="@{/img/shop_img/hyg7.png}" alt="Чистка зубов">
+            <span>Чистка зубов</span>
+        </a>
+        <a href="/care/skin" class="card green wide">
+            <img th:src="@{/img/shop_img/hyg8.png}" alt="Уход за кожей и шерстью">
+            <span>Уход за кожей и шерстью</span>
+        </a>
+
+    </div>
+</section>
+
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-block logo-block">
+            <!--      <h3>HAPPYTAL</h3>-->
+            <img style="width: 150px;" th:src="@{/img/logo.png}">
+            <p>Найди то, что подойдет именно вашему питомцу</p>
+        </div>
+
+        <div class="footer-block nav-block">
+            <h4>Навигация</h4>
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Отзывы</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-block contact-block">
+            <h4>Контакты</h4>
+            <p>Email: Test@yandex.ru</p>
+            <p>Тел: 8 800 300 06 00</p>
+        </div>
+
+        <div class="footer-block social-block">
+            <h4>Мы в соцсетях</h4>
+            <div class="social-icons">
+                <a href="https://ru.wikipedia.org/wiki/ВКонтакте"><img th:src="@{/img/vk.png}" alt="VK"/></a>
+                <a href="https://t.me/DKNASASAL"><img th:src="@{/img/telegram.png}" alt="Telegram"/></a>
+                <a href="https://www.instagram.com/zhumatay_ahmetaly/"><img th:src="@{/img/instagram.png}"
+                                                                            alt="Instagram"/></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 HAPPYTAL. Все права защищены. | Разработано @zhumatay_ahmetaly</p>
+    </div>
+</footer>
+</div>
+<script th:src="@{/java_script/auth.js}"></script>
+<script th:src="@{/java_script/register.js}"></script>
+<script th:src="@{/java_script/search.js}"></script>
+
+</body>
+</html>

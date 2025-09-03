@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HappyTail</title>
+
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" th:href="@{/styles/styles.css}">
+    <link rel="stylesheet" th:href="@{/styles/register.css}">
+    <link rel="icon" th:href="@{/img/logo.png}">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="logo">
+        <a th:href="@{/main}">
+            <img th:src="@{/img/logo.png}" alt="HappyTail Logo">
+        </a>
+    </div>
+
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Поиск...">
+        <div id="suggestions" class="suggestions"></div>
+    </div>
+
+    <nav class="nav-links">
+        <a th:href="@{/shop}">Дүкен</a>
+        <a th:href="@{/medic}">Ветеринарлық дәріхана</a>
+        <a th:href="@{/sale}">Акциялар</a>
+    </nav>
+
+    <div class="auth-buttons">
+        <button class="register" onclick="openRegistrationModal()">Тіркелу</button>
+        <button class="login" onclick="openLoginModal()">Авторизация</button>
+    </div>
+</header>
+
+
+<!-- Контейнер для модального окна -->
+<div id="modal-container"></div>
+
+<!-- Фильтрационная панель -->
+<div class="filter-section">
+    <div class="filter-buttons">
+        <button class="filter-btn" data-filter="Сухие корма">Сухие корма</button>
+        <button class="filter-btn" data-filter="Консервы">Консервы</button>
+        <button class="filter-btn" data-filter="Лакомства для собак">Лакомства</button>
+        <button class="filter-btn" data-filter="Сухой корм для собак">Элитный корм</button>
+        <button class="filter-btn" data-filter="Ветеринарные корма для собак">Вет. корма</button>
+        <button class="filter-btn" data-filter="all">Все товары</button>
+    </div>
+
+
+    <div class="filter-weight-range">
+        <label for="weight-range">Вес:</label>
+        <div class="range-wrapper">
+            <input type="range" id="weight-range" min="0.045" max="10" step="0.1" value="0.045">
+            <div id="range-float">10 кг</div>
+        </div>
+        <span id="weight-value">от 45 г до 10 кг</span>
+    </div>
+
+</div>
+
+<div class="shop-container">
+    <div class="shop_card-grid">
+        <div class="item-card"
+             th:each="item : ${items}"
+             th:attr="data-spec=${item.specifications}, data-base-price=${item.price}">
+
+            <div class="item-img">
+                <img th:src="@{${item.itemImg}}" alt="Фото товара">
+            </div>
+
+            <div class="item-info">
+                <div class="item-header">
+                    <div class="item-rating">
+                        <span th:text="${item.estimation} + ' ★'">5.0 ★</span>
+                    </div>
+                    <div class="item-price">
+            <span class="price"
+                  th:text="${item.price} + ' ₸'"
+                  th:attr="data-base-price=${item.price}">999 ₸</span>
+                    </div>
+                </div>
+
+                <div class="item-weight">
+                    <div class="item-weight-text">
+                        <p th:each="w : ${item.weight}"
+                           th:attr="data-weight=${w}"
+                           th:text="${w} + ' kg'">kg</p>
+                    </div>
+                </div>
+
+                <div class="item-name" th:text="${item.name}">GO'KITCHEN...</div>
+                <button class="buy-btn" onclick="addToCart(this)">Себетке салу</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-block logo-block">
+            <!--      <h3>HAPPYTAL</h3>-->
+            <img style="width: 150px;" th:src="@{/img/logo.png}">
+            <p>Найди то, что подойдет именно вашему питомцу</p>
+        </div>
+
+        <div class="footer-block nav-block">
+            <h4>Навигация</h4>
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Отзывы</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-block contact-block">
+            <h4>Контакты</h4>
+            <p>Email: Test@yandex.ru</p>
+            <p>Тел: 8 800 300 06 00</p>
+        </div>
+
+        <div class="footer-block social-block">
+            <h4>Мы в соцсетях</h4>
+            <div class="social-icons">
+                <a href="https://ru.wikipedia.org/wiki/ВКонтакте"><img th:src="@{/img/vk.png}" alt="VK"/></a>
+                <a href="https://t.me/DKNASASAL"><img th:src="@{/img/telegram.png}" alt="Telegram"/></a>
+                <a href="https://www.instagram.com/zhumatay_ahmetaly/"><img th:src="@{/img/instagram.png}"
+                                                                            alt="Instagram"/></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 HAPPYTAL. Все права защищены. | Разработано @zhumatay_ahmetaly</p>
+    </div>
+</footer>
+
+<!-- Скрипт -->
+<script th:src="@{/java_script/auth.js}"></script>
+<script th:src="@{/java_script/price_fix.js}"></script>
+<script th:src="@{/java_script/register.js}"></script>
+<script th:src="@{/java_script/search.js}"></script>
+<script th:src="@{/java_script/weight_line.js}"></script>
+
+
+</body>
+</html>

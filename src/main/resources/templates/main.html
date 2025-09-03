@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>HappyTail</title>
+
+    <!-- Подключение стилей -->
+    <link rel="stylesheet" th:href="@{/styles/styles.css}">
+    <link rel="stylesheet" th:href="@{/styles/register.css}">
+</head>
+<body>
+
+<!-- Header: выбор по isRegistered -->
+<!-- Оба блока сразу: -->
+<div class="header-unreg" th:replace="blocks/unReg_layout :: header_unReg"></div>
+
+
+<!--<header class="navbar">-->
+<!--  <div class="logo">-->
+<!--    <img th:src="@{/img/logo.png}" alt="HappyTail Logo">-->
+<!--  </div>-->
+
+<!--  <div class="search-bar">-->
+<!--    <input type="text" id="searchInput" placeholder="Поиск...">-->
+<!--    <div id="suggestions" class="suggestions"></div>-->
+<!--  </div>-->
+
+<!--  <nav class="nav-links">-->
+<!--    <a th:href="@{/shop}">Дүкен</a>-->
+<!--    <a th:href="@{/medic}">Ветеринарлық дәріхана</a>-->
+<!--    <a th:href="@{/sale}">Акциялар</a>-->
+<!--  </nav>-->
+
+<!--  <div class="auth-buttons">-->
+<!--    <button class="register" onclick="openRegistrationModal()">Тіркелу</button>-->
+<!--    <button class="login" onclick="openLoginModal()">Авторизация</button>-->
+<!--  </div>-->
+<!--</header>-->
+
+<!-- Контейнер для модального окна -->
+<div id="modal-container"></div>
+<!-- Главный баннер -->
+<section class="hero-section">
+    <div class="hero-overlay">
+        <h1>Дрессировка домашних животных</h1>
+        <p>
+            Сайт создан для людей, желающих дрессировать своего питомца! Здесь вы можете получить необходимую информацию
+            о том, что происходит внутри! Приглашаем к сотрудничеству и обмену информацией. Все новости нашего приюта вы
+            можете посмотреть в разделе "Новости".
+        </p>
+        <button class="hero-button">Задать вопрос</button>
+    </div>
+</section>
+
+<!-- Блок с расписанием -->
+<section class="schedule-section">
+    <div class="stars">★ ★ ★ ★ ★ ★ ★</div>
+    <h2>Расписание посещений</h2>
+    <div class="schedule-table-container">
+        <table class="schedule-table">
+            <thead>
+            <tr>
+                <th>Понедельник</th>
+                <th>Вторник</th>
+                <th>Среда</th>
+                <th>Четверг</th>
+                <th>Пятница</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+            </tr>
+            <tr>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+            </tr>
+            <tr>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+            </tr>
+            <tr>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+            </tr>
+            <tr>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+                <td>8:00-17:00, перерыв на обед</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- Секция "О работе компании" -->
+<section class="company-info">
+    <h2>О работе компании</h2>
+    <div class="features-grid">
+        <div class="feature">
+            <img th:src="@{/img/top.png}" alt="Награда">
+            <h3>Лучшая компания в городе</h3>
+            <p>Напишите, в чем состоят ваши особенности и почему следует выбрать именно вас</p>
+        </div>
+        <div class="feature">
+            <img th:src="@{/img/peting.png}" alt="Тренер">
+            <h3>Профессиональные тренеры</h3>
+            <p>Напишите, в чем состоят ваши особенности и почему следует выбрать именно вас</p>
+        </div>
+        <div class="feature">
+            <img th:src="@{/img/guy.png}" alt="Отзывы">
+            <h3>Положительные отзывы</h3>
+            <p>Напишите, в чем состоят ваши особенности и почему следует выбрать именно вас</p>
+        </div>
+        <div class="feature">
+            <img th:src="@{/img/buy.png}" alt="Цена">
+            <h3>Доступная стоимость</h3>
+            <p>Напишите, в чем состоят ваши особенности и почему следует выбрать именно вас</p>
+        </div>
+        <div class="feature">
+            <img th:src="@{/img/Service.png}" alt="Услуги">
+            <h3>Большой выбор услуг</h3>
+            <p>Напишите, в чем состоят ваши особенности и почему следует выбрать именно вас</p>
+        </div>
+        <div class="feature">
+            <img th:src="@{/img/sale.png}" alt="Скидки">
+            <h3>Скидки и акции</h3>
+            <p>Напишите, в чем состоят ваши особенности и почему следует выбрать именно вас</p>
+        </div>
+    </div>
+</section>
+
+<!-- Секция "Наши новости" -->
+<section class="news-section">
+    <div class="news-header">
+        <div class="stars">★ ★ ★ ★ ★ ★ ★</div>
+        <h2>Наши новости</h2>
+        <p>Здесь вы можете прочитать о событиях, которые происходят в нашей компании</p>
+    </div>
+
+    <div class="news-grid">
+        <div class="news-card" th:each="event : ${events}">
+            <img th:src="@{${event.imageUrl}}" alt="Событие">
+            <div class="news-content">
+                <h3 th:text="${event.date}">Дата события</h3>
+                <p th:text="${event.description}">Описание события</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<section style="padding: 60px 0; background-color: #f9f9f9;">
+    <div style="text-align: center;">
+        <h2 style="font-size: 36px; margin-bottom: 10px;">⭐ Почему выбирают нас ⭐</h2>
+        <p style="max-width: 700px; margin: 0 auto 40px; font-size: 18px; color: #555;">
+            Мы стремимся предоставить лучший сервис нашим клиентам, уделяя внимание каждой детали.
+        </p>
+    </div>
+
+    <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 40px;">
+        <div style="flex: 1; min-width: 250px; max-width: 300px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px; text-align: center;">
+            <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Иконка 1"
+                 style="width: 60px; margin-bottom: 15px;">
+            <h3 style="font-size: 20px; margin-bottom: 10px;">Надежность</h3>
+            <p style="color: #666;">Гарантия качества услуг и своевременное выполнение обязательств.</p>
+        </div>
+
+        <div style="flex: 1; min-width: 250px; max-width: 300px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px; text-align: center;">
+            <img src="https://cdn-icons-png.flaticon.com/512/4689/4689155.png" alt="Иконка 2"
+                 style="width: 60px; margin-bottom: 15px;">
+            <h3 style="font-size: 20px; margin-bottom: 10px;">Опыт</h3>
+            <p style="color: #666;">Более 10 лет успешной работы и постоянного развития.</p>
+        </div>
+
+        <div style="flex: 1; min-width: 250px; max-width: 300px; background: white; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px; text-align: center;">
+            <img src="https://cdn-icons-png.flaticon.com/512/4689/4689153.png" alt="Иконка 3"
+                 style="width: 60px; margin-bottom: 15px;">
+            <h3 style="font-size: 20px; margin-bottom: 10px;">Поддержка</h3>
+            <p style="color: #666;">Всегда на связи и готовы помочь вам в любое время.</p>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-block logo-block">
+            <!--      <h3>HAPPYTAL</h3>-->
+            <img style="width: 150px;" th:src="@{/img/logo.png}">
+            <p>Найди то, что подойдет именно вашему питомцу</p>
+        </div>
+
+        <div class="footer-block nav-block">
+            <h4>Навигация</h4>
+            <ul>
+                <li><a href="#">Главная</a></li>
+                <li><a href="#">О нас</a></li>
+                <li><a href="#">Отзывы</a></li>
+                <li><a href="#">Контакты</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-block contact-block">
+            <h4>Контакты</h4>
+            <p>Email: Test@yandex.ru</p>
+            <p>Тел: 8 800 300 06 00</p>
+        </div>
+
+        <div class="footer-block social-block">
+            <h4>Мы в соцсетях</h4>
+            <div class="social-icons">
+                <a href="https://ru.wikipedia.org/wiki/ВКонтакте"><img th:src="@{/img/vk.png}" alt="VK"/></a>
+                <a href="https://t.me/DKNASASAL"><img th:src="@{/img/telegram.png}" alt="Telegram"/></a>
+                <a href="https://www.instagram.com/zhumatay_ahmetaly/"><img th:src="@{/img/instagram.png}"
+                                                                            alt="Instagram"/></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; 2025 HAPPYTAL. Все права защищены. | Разработано @zhumatay_ahmetaly</p>
+    </div>
+</footer>
+
+<!-- Скрипт -->
+<script th:src="@{/java_script/auth.js}"></script>
+<script th:src="@{/java_script/register.js}"></script>
+<script th:src="@{/java_script/search.js}"></script>
+</body>
+</html>

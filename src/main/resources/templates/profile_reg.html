@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Профиль</title>
+    <link rel="stylesheet" th:href="@{/styles/styles.css}">
+    <link rel="stylesheet" th:href="@{/styles/register.css}">
+    <link rel="stylesheet" th:href="@{/styles/ava_js_modal.css}">
+</head>
+<body>
+<div class="header-reg" th:replace="blocks/reg_layout :: header_Reg"></div>
+<div id="modal-container"></div>
+
+
+<main class="profile-container">
+    <section class="profile-section">
+        <h1>Ваш профиль</h1>
+        <div class="profile-card">
+            <div class="profile-image">
+                <img th:src="${userAva}" alt="Аватар пользователя">
+                <button class="submit-btn" onclick="openAvatarModal()">Изменить картинку профиля</button>
+            </div>
+            <div id="profile-info-block" class="profile-info">
+                <div class="info-block">
+                    <p>Имя пользователя</p>
+                    <strong th:text="${nickName}">User_name</strong>
+                    <a th:href="@{'/user/' + ${userId} + '/edit-name'}">Изменить имя</a>
+                </div>
+                <div class="info-block">
+                    <p>Электронная почта</p>
+                    <strong th:text="${userName}">User_Email</strong>
+                    <a th:href="@{'/user/' + ${userId} + '/edit-password'}">Изменить пароль</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- МОДАЛЬНОЕ ОКНО -->
+    <div id="avatarModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeAvatarModal()">&times;</span>
+            <h3>Изменить аватар</h3>
+            <input type="text" id="newAvatarUrl" placeholder="Введите URL картинки">
+            <button onclick="submitAvatarUrl()">Сохранить</button>
+        </div>
+    </div>
+
+
+    <section class="cart-section">
+        <h2>Корзина</h2>
+
+        <div th:if="${#lists.isEmpty(cartItems)}" class="empty-cart">
+            <p>Товаров не обнаружено</p>
+            <img th:src="@{/img/empty-cart.png}" alt="Корзина пуста">
+        </div>
+
+        <div th:if="${!#lists.isEmpty(cartItems)}">
+            <div class="cart-list">
+                <div th:each="item : ${cartItems}" class="cart-item">
+                    <img th:src="@{${item.productImage}}" alt="Товар" class="product-img">
+                    <div>
+                        <b th:text="${item.productName}"></b><br>
+                        <span>кол-во: <span th:text="${item.quantity}"></span></span>
+                        <span>Цена: <span th:text="${item.price}"></span> ₸</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-summary">
+                <p>Сумма покупки: <span th:text="${total}"></span> ₸</p>
+                <button class="buy-btn">Купить</button>
+            </div>
+        </div>
+    </section>
+
+</main>
+<div class="header-unreg" th:replace="blocks/unReg_layout :: footer"></div>
+
+<script th:inline="javascript">
+    const userId = [[${userId}]];
+</script>
+
+<script th:src="@{/java_script/openAvatarModal.js}"></script>
+</body>
+</html>

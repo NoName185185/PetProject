@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<!-- 🔼 HEADER -->
+<div th:fragment="header_Reg">
+    <div id="header-reg">
+        <header class="navbar">
+            <div class="logo">
+                <a th:href="@{'/' + ${userId} + '/main'}">
+                    <img th:src="@{/img/logo.png}" alt="HappyTail Logo">
+                </a>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Поиск...">
+                <div id="suggestions" class="suggestions"></div>
+            </div>
+
+            <nav class="nav-links">
+                <a th:href="@{'/' + ${userId} + '/shop'}">Дүкен</a>
+                <a th:href="@{'/' + ${userId} + '/medic'}">Ветеринарлық дәріхана</a>
+                <a th:href="@{'/' + ${userId} + '/sale'}">Акциялар</a>
+            </nav>
+
+            <a th:href="@{'/' + ${userId} + '/profile'}">
+                <div class="user-button" style="cursor:pointer;">
+                    <img src="/img/default-avatar.png" alt="User Avatar" class="user-avatar">
+                    <span class="user-name" th:text="${nickName}">User name</span>
+                </div>
+            </a>
+
+
+        </header>
+    </div>
+</div>
+
+
+<!-- 🔽 FOOTER -->
+<div th:fragment="footer">
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-block logo-block">
+                <img style="width: 150px;" th:src="@{/img/logo.png}">
+                <p>Найди то, что подойдет именно вашему питомцу</p>
+            </div>
+
+            <div class="footer-block nav-block">
+                <h4>Навигация</h4>
+                <ul>
+                    <li><a href="#">Главная</a></li>
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Отзывы</a></li>
+                    <li><a href="#">Контакты</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-block contact-block">
+                <h4>Контакты</h4>
+                <p>Email: Test@yandex.ru</p>
+                <p>Тел: 8 800 300 06 00</p>
+            </div>
+
+            <div class="footer-block social-block">
+                <h4>Мы в соцсетях</h4>
+                <div class="social-icons">
+                    <a href="https://ru.wikipedia.org/wiki/ВКонтакте"><img th:src="@{/img/vk.png}" alt="VK"/></a>
+                    <a href="https://t.me/DKNASASAL"><img th:src="@{/img/telegram.png}" alt="Telegram"/></a>
+                    <a href="https://www.instagram.com/zhumatay_ahmetaly/"><img th:src="@{/img/instagram.png}"
+                                                                                alt="Instagram"/></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 HAPPYTAL. Все права защищены. | Разработано @zhumatay_ahmetaly</p>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
