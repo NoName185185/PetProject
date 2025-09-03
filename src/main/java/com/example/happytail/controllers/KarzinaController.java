@@ -52,7 +52,7 @@ public class KarzinaController {
             k.setCount(count);
 
             karzinaRepository.save(k);
-            return ResponseEntity.ok("Item added to karzina");
+            return ResponseEntity.ok("Item added to karzina aassa");
 
         } catch (Exception e) {
             e.printStackTrace();
